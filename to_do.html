@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main_menu.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <nav class="navbar"></nav>
+    <nav class="navbar container-fluid">
+        <div class="left_icons">
+            <div class="back_arrow "> <img src="img/icons8-four-squares-24.png" alt=""></div>
+            <img class="left_logo" src="img/logo2.png" alt="">
+        </div>
+
+        <div class="right_icons ">
+            <i class="fa-solid fa-magnifying-glass magnifying-glass_icon"></i>
+            <i class="fa-solid fa-bell bell_icon"></i>
+            <div class="profile"><img class="profile" src="img/profile.jpg" alt=""></div>
+        </div>
+    </nav>
+    <div class="heading_div container">
+        <button class="to_do tablinks" id="to_do" onclick="search(event, 'to_do_div')">to-do</button>
+        <button class="insights tablinks" id="insights"onclick="search(event, 'insights_div')">insights</button>
+    </div>
+    
+    <div class="search_div_to_do" id="to_do_div">
+        <div class="search_div2">
+            <div class="calendar_div"><i class="fa-solid fa-calendar-days"></i></div>
+            <input type="text" class="search_input" placeholder="dd/mm/yyyy">
+            <div class="filter_div"><img class="filter_icon" src="img/icons8-filter-50.png" alt=""></i></div>
+        </div>
+    </div>
+    <div class="search_div_to_do" id="insights_div">
+        <div class="search_div2">
+            <div class="calendar_div"><i class="fa-solid fa-arrow-down-wide-short"></i></div>
+            <input type="text" class="search_input Search_in_insights" placeholder="Search in insights ">
+            <div class="filter_div"><img class="filter_icon" src="img/icons8-filter-50.png" alt=""></i></div>
+        </div>
+    </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script>
+    const to_do = document.getElementById("to_do");
+    const insights = document.getElementById("insights");
+
+    to_do.addEventListener("click", function () {
+
+        to_do.classList.toggle("to_do_toggle");
+        insights.classList.remove("to_do_toggle");
+
+        // to_do.style.color = "#b5020b";
+        // to_do.style.borderBottom = "3px solid #b5020b";
+        // to_do.style.fontWeight = "600";
+
+    });
+    insights.addEventListener("click", function () {
+
+        insights.classList.toggle("to_do_toggle");
+        to_do.classList.remove("to_do_toggle");
+
+        // Insights.style.color = "#b5020b";
+        // Insights.style.borderBottom = "3px solid #b5020b";
+
+    });
+</script>
+<script>
+    function search(evt,Name) {
+      var i, search_div_to_do, tablinks;
+      search_div_to_do = document.getElementsByClassName("search_div_to_do");
+
+      for (i = 0; i < search_div_to_do.length; i++) 
+      {
+        search_div_to_do[i].style.display = "none";
+       
+        
+      }
+
+      tablinks = document.getElementsByClassName("tablinks");
+
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+       
+
+      }
+
+      document.getElementById(Name).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    </script>
+
+</html>
